@@ -17,7 +17,10 @@ class FileWiter:
             return self.writeRule(ruleModel)
         return False
 
-    def checkRule(self, ruleChildren):
+    
+    # Verifica se as regras existentes no config.xml do pfSense
+    # são as mesmas definidas no obejto ruleModel
+    def checkRule(self, ruleChildren, ruleModel):
         for children in ruleChildren:
             # comparar ruleModel com children.text
             print (children.text)
@@ -32,11 +35,9 @@ class FileWiter:
                 tree = et.parse(self.configFileWithPath)
                 root = tree.getroot()
 
-                # utilizar esse trecho de código para verificar se a regra que
-                # será adicionada já se encontra no arquivo config.xml 
                 for rules in root.findall(".//filter"):
                     for rule in rules.getchildren():
-                        if self.checkRule(rule):
+                        if self.checkRule(rule, ruleModel):
                             print('Adding rule in config.xml file')
                         else:
                             print('Rule exists. Not added.')

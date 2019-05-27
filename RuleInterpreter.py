@@ -4,7 +4,7 @@ class RuleInterpreter:
 
     def isRule(self, rule):
         for key in self.ruleKeys:
-            if rule in key:
+            if key in rule:
                 return True
 
         return False
