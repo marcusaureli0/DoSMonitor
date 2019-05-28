@@ -44,6 +44,7 @@ class RuleModel:
 
     def toXML(self):
         return '''
+        <rule>
         <id></id>
         <tracker>%s</tracker>
         <type>%s</type>
@@ -74,6 +75,7 @@ class RuleModel:
             <time>%s</time>
             <username>%s</username>
         </created>
+        <rule>
         ''' % (self.tracker, self.type, self.interface, self.ipprotocol, self.protocol,
                 self.sourceAddress, self.updatedTime, self.updatedByUser,
                 self.createdTime, self.createdUserName)

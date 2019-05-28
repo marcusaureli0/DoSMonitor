@@ -20,11 +20,19 @@ class FileWriter:
     
     # Verifica se as regras existentes no config.xml do pfSense
     # são as mesmas definidas no obejto ruleModel
-    def checkRule(self, ruleChildren, ruleModel):
-        for children in ruleChildren:
-            # comparar ruleModel com children.text
-            print (children.text)
-        return True
+    def ruleNotExist(self, ruleModel, ruleChild):
+        sameIP = False
+        sameInterface = False
+        for rule in ruleChild:
+            for item in rule:
+                if item.tag == 'source':
+                    for sourceChild in item:
+                        if sourceChild.tag == 'address' and sourceChild.text == ruleModel.sourceAddress:
+                            sameIP = True
+                        elif sourceChild == 'interface' and sourceChild.text == ruleModel.interface:
+                            sameInterface = True
+                
+        return not sameIP or not sameInterface
 
     def writeRule(self, ruleModel):
         print('Writing rule in ', self.configFileWithPath)
@@ -32,20 +40,20 @@ class FileWriter:
             print('reading lines of ', self.configFileWithPath)
             print('parsing xml file...', self.configFileWithPath)
             print('rule: ', ruleModel.toXML())
-            
+
             try:
                 tree = et.parse(self.configFileWithPath)
                 root = tree.getroot()
-
-                for rules in root.findall(".//filter"):
-                    rules = filterNode.getChildren()
                 
-                if self.ruleNotExist(ruleModel, rules):    
-                    #filterNode.append(ruleModel.toXML())
-                    print('rule added successfully')
-                else:
-                            print('Rule exists. Not added.')
-                return True
+                for ruleChild in root.findall(".//filter"):
+                    if self.ruleNotExist(ruleModel, ruleChild):
+                        # escrever RuleModel no config.xml
+                        print('rule added successfully')
+                        return True
+                    else:
+                        print('not added. Rule exists on config.xml')
+                        break
             except:
                 print('error on parsing xml file')     
-                return False
+            
+            return False
