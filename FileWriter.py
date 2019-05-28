@@ -2,7 +2,7 @@ import xml.etree.ElementTree as et
 import RuleInterpreter as ri
 import RuleModel as rm
 
-class FileWiter:
+class FileWriter:
 
     def __init__(self, configFileWithPath):
         self.configFileWithPath = configFileWithPath
@@ -31,6 +31,8 @@ class FileWiter:
         with open (self.configFileWithPath , "r+") as f:
             print('reading lines of ', self.configFileWithPath)
             print('parsing xml file...', self.configFileWithPath)
+            print('rule: ', ruleModel.toXML())
+            
             try:
                 tree = et.parse(self.configFileWithPath)
                 root = tree.getroot()

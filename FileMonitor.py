@@ -7,7 +7,7 @@ class FileMonitor:
         self.configFileWithPath = configFileWithPath
         self.snortLogPath = snortLogPath
         self.oldLine = ""
-        self.fileWriter = fw.FileWiter(configFileWithPath)
+        self.fileWriter = fw.FileWriter(configFileWithPath)
         self.pfSenseManager = pfm.PfSenseManager()
 
     def start(self):
