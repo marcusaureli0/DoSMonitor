@@ -38,10 +38,12 @@ class FileWriter:
                 root = tree.getroot()
 
                 for rules in root.findall(".//filter"):
-                    for rule in rules.getchildren():
-                        if self.checkRule(rule, ruleModel):
-                            print('Adding rule in config.xml file')
-                        else:
+                    rules = filterNode.getChildren()
+                
+                if self.ruleNotExist(ruleModel, rules):    
+                    #filterNode.append(ruleModel.toXML())
+                    print('rule added successfully')
+                else:
                             print('Rule exists. Not added.')
                 return True
             except:
