@@ -4,7 +4,7 @@ class RuleModel:
 
     def __init__(self, rule):
         self.rule = rule
-        timeEpoch = time.time()
+        timeEpoch = '%s' % (time.time())
         self.tracker = timeEpoch
         self.createdTime = timeEpoch
         self.updatedTime = timeEpoch
@@ -75,10 +75,9 @@ class RuleModel:
             <time>%s</time>
             <username>%s</username>
         </created>
-        <rule>
+        </rule>
         ''' % (self.tracker, self.type, self.interface, self.ipprotocol, self.protocol,
                 self.sourceAddress, self.updatedTime, self.updatedByUser,
                 self.createdTime, self.createdUserName)
-
     
 
