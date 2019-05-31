@@ -3,8 +3,9 @@ import time
 class RuleModel:
 
     def __init__(self, rule):
+        t = '%s' % time.time()
         self.rule = rule
-        timeEpoch = '%s' % (time.time())
+        timeEpoch = t.split('.')[0]
         self.tracker = timeEpoch
         self.createdTime = timeEpoch
         self.updatedTime = timeEpoch
@@ -21,7 +22,7 @@ class RuleModel:
         self.updateInfo()
 
     # preenche as informacoes do objeto
-    # Interpretar a seguinte mensagem:
+    # Exemplo de mensagem:
     # 05/27-02:30:42.070886 [**] [1:321:3] DoS [**] [Priority: 0] 
     # {UDP} 192.168.1.102:5060 -> 192.168.1.1:5060
     def updateInfo(self):
