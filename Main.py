@@ -1,7 +1,7 @@
 import FileMonitor as fm
 
-xmlFileWithPath = r"C:\Users\Marcus\Documents\config.xml"
-snortLogPath = r"C:\Users\Marcus\Documents\test.txt"    
+xmlFileWithPath = r"/cf/conf/config.xml"
+snortLogPath = r"/var/log/snort/snort.log"    
 
 fileMonitor = fm.FileMonitor(xmlFileWithPath, snortLogPath)
 fileMonitor.start()

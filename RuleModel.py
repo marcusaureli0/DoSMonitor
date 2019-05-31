@@ -20,7 +20,7 @@ class RuleModel:
         self.destinationPort = ''
         self.updateInfo()
 
-    # preenche as informações do objeto
+    # preenche as informacoes do objeto
     # Interpretar a seguinte mensagem:
     # 05/27-02:30:42.070886 [**] [1:321:3] DoS [**] [Priority: 0] 
     # {UDP} 192.168.1.102:5060 -> 192.168.1.1:5060

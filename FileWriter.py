@@ -10,8 +10,8 @@ class FileWriter:
     
     def writeRuleStr(self, rule):
         if self.ruleInterpreter.isRule(rule):
-            # escreve a regra no arquivo de configuração
-            #  config.xml do pfSense 
+            # escreve a regra no arquivo de configuracao
+            # config.xml do pfSense 
             print('Rule detected: ', rule)
             ruleModel = rm.RuleModel(rule)
             return self.writeRule(ruleModel)
@@ -19,7 +19,7 @@ class FileWriter:
 
     
     # Verifica se as regras existentes no config.xml do pfSense
-    # são as mesmas definidas no obejto ruleModel
+    # sao as mesmas definidas no obejto ruleModel
     def ruleNotExist(self, ruleModel, filterChilds):
         sameIP = False
         sameInterface = False
@@ -42,8 +42,7 @@ class FileWriter:
         with open (self.configFileWithPath , "r+") as f:
             print('reading lines of ', self.configFileWithPath)
             print('parsing xml file...', self.configFileWithPath)
-            print('rule: ', ruleModel.toXML())
-
+        
             try:
                 tree = et.parse(self.configFileWithPath)
                 root = tree.getroot()
