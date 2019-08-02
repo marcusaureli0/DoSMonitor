@@ -9,12 +9,12 @@ class RuleModel:
         self.tracker = timeEpoch
         self.createdTime = timeEpoch
         self.updatedTime = timeEpoch
-        self.type = 'reject'
+        self.type = 'block'
         self.interface = 'lan'
         self.ipprotocol = 'inet'
         self.protocol = 'udp'
-        self.updatedByUser = 'SpfManager'
-        self.createdUserName = 'SpfManager'
+        self.updatedByUser = 'DosMonitor'
+        self.createdUserName = 'DosMonitor'
         self.destinationIP = ''
         self.sourceAddress = ''
         self.sourcePort = ''
