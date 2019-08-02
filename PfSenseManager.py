@@ -6,10 +6,14 @@ class PfSenseManager:
 
     def updateSystemRules(self):
         try:
-            configCache = '/tmp/config.cache'
-            cmd = '/etc/rc.filter_configure_sync'
-            os.remove(configCache)
-            os.system(cmd)
+             # clear cache
+            os.remove('/tmp/config.cache')
+
+            # sync filters
+            os.system('/etc/rc.filter_configure_sync')
+
+            # clear pfsense state
+            os.system('pfctl -F state')
             print('rules updated successfully')
         except:
             print('failed, rules not updated')
