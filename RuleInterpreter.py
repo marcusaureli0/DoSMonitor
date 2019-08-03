@@ -1,5 +1,5 @@
 class RuleInterpreter:
-    ruleKeys = ['DDoS','DoS']
+    ruleKeys = ['->']
 
 
     def isRule(self, rule):

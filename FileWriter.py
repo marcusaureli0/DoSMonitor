@@ -65,8 +65,9 @@ class FileWriter:
                         interface = et.SubElement(newRule, 'interface')
                         ipprotocol = et.SubElement(newRule, 'ipprotocol')
                         protocol = et.SubElement(newRule, 'protocol')
-                        #destination = et.SubElement(newRule, 'destination')
-                        #destAny = et.SubElement(destination, 'any')
+                        
+                        destination = et.SubElement(newRule, 'destination')
+                        et.SubElement(destination, 'any')
 
                         source = et.SubElement(newRule, 'source')
                         sourceAddress = et.SubElement(source, 'address')
