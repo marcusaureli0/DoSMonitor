@@ -83,7 +83,7 @@ class FileWriter:
                         ipprotocol.text = ruleModel.ipprotocol
                         protocol.text = ruleModel.protocol
                         
-                        filterChilds.append(newRule)
+                        filterChilds.insert(0, newRule)
                         tree.write(self.configFileWithPath)
                         print('rule added successfully')
                         return True
